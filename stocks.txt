@@ -1,0 +1,10 @@
+Facebook		FB
+Apple			AAPL
+Coke			KO
+Tesla			TSLA
+Google			GOOGL
+Twitter			TWTR
+Microsoft		MSFT
+Xilinx			XLNX
+Intel			INTC
+AMD			AMD
