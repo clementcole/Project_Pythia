@@ -1,5 +1,4 @@
 # Project Name: 		FPGA Based Stock Prediction
-Project Name: 		   FPGA Based Stock Prediction
 
 Team Name: 	        Pythia
 
