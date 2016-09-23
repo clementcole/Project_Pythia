@@ -1,0 +1,7 @@
+This Part of the project contains all the data mined from the internet using all.py as the main.
+In order to mine all of the stock data for all 10 stock types execute the command "python all.py" which contains the scripts for 
+getting the stock data using yahoo_finance api.
+
+
+thanks.
+Clement Cole. 
