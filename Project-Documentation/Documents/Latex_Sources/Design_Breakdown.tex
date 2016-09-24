@@ -1,0 +1,100 @@
+\documentclass{sig-alternate}
+
+\newcommand{\ignore}[1]{}
+\usepackage{fancyhdr}
+\usepackage[normalem]{ulem}
+\usepackage[hyphens]{url}
+\usepackage{hyperref}
+%--------------------------------------------------------------------------------------------------------------------------------------------------------
+%%%%%%%%%%%---SETME-----%%%%%%%%%%%%%
+\newcommand{\microsubmissionnumber}{XXX}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\fancypagestyle{firstpage}{
+	\fancyhf{}
+	\setlength{\headheight}{50pt}
+	\renewcommand{\headrulewidth}{0pt}
+	\fancyhead[C]{\normalsize{SENIOR DESIGN 2016 UNIVERSITY OF NORTH TEXAS
+			\textbf{\#\microsubmissionnumber} -- Confidential Draft -- Do NOT Distribute!!}} 
+	\pagenumbering{arabic}
+}  
+
+%%%%%%%%%%%---SETME-----%%%%%%%%%%%%%
+\title{FPGA STOCK TRADING PREDICTION}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+	\maketitle
+	\thispagestyle{firstpage}
+	\pagestyle{plain}
+		\begin{center}
+			{\Large\bfseries Team Members:}\\[5pt] 
+			Clement Cole, Christopher Roche, Elijah Adedapo, Enrique Torres\\[14pt]
+		\end{center}
+	
+	
+	
+	%%%%%% -- PAPER CONTENT STARTS-- %%%%%%%%
+	
+	\begin{abstract}
+	The paper describes the implementation process for a FPGA hardware approach in computing daily highs and lows for ten different types of stocks and how compares to that of a computer software architecture approach in terms of speed. 
+	\end{abstract}
+	
+	\section{Introduction}
+	  The type of data streams for stock values is of stochastic kind and so therefore, the complexity of an algorithm to predict such values will increases. As the complexity of such abstract machine representations of an algorithm increases, so does the actual architectural components of the computer system architecture required to perform such operations whether in sequence or in parallel in order to compute the resultant values accurately with a given set of input parameters. FPGA's inherent pipeline and parallel architecture rendered an hypothesis of their potential to compute huge amount of stochastic input data for daily highs and lows prediction in stock trading. This implementation process also takes advantage of the innate data flow system of the FPGA's construction during the implementation process of the algorithm.
+	 % \subsection{Type of algorithm used}
+	  %\subsection{Paper Evaluation Objectives} 
+	  %\subsection{Optional Appendix for Resubmitted Papers}
+   \section{High Level Requirements}
+	   \textit {Note that there might be some changes during the implementation process.}
+	   \begin{itemize}
+	   	\item  Predict the stock prices (\textit{Day's High and Day's Low}).
+	   	\item  Use a web server to feed the stock details to the FPGA and display the prediction results.
+	   	\item Create a software model of the prediction algorithm. 
+	   	\item Implement the prediction algorithm on the FPGA hardware.
+	   	\item Compare the performance of software and hardware versions of algorithm implementations. 
+	   	\end{itemize}
+   \section {Project Design Phases and Specifications}
+     \subsection{Research Phase}
+	     \subsubsection{Algorithm Analysis and Implementation Research}
+	     \begin{itemize}
+		     \item The Daily high and low bid-ask spreads are calculated based on the assumptions that the buyers initiates the prices for highs and that of lows are initiated by the sellers (Corwin, Schultz, ). Also the advantage of using this procedure has been proven by previous research (Corwin, Schultz, ) in which they outperformed previous methods of estimating daily highs and lows. 
+		     \item Coupled with the fitness computation of genetic algorithm, we try to first classify each input into a binary class such as that of genetic alleles using the sigmoid function: 
+		     \begin{equation} 
+		     P_t = \frac{1}{1 + e^{-t} }
+		     \end{equation}
+			 \item Genetic algorithm as implemented by evolutionary biology tries to find the best possible mutational selection and crossover of the best attributes of previous or parent results of a species unto the offspring's genetic structure. So in this case as implemented by (cite paper), the objective is to compute the best potential outcome in terms of combination of all genetic makeup in the child's copy of genotype. 
+		 
+			 \item With a population size N, binary  fitness of \[ f_{j} \] and \[ f_{i} \] . 
+			\begin{equation}
+			P_i = \frac{f_i}{\sum_{j=1}^{N} f_j}
+			\end{equation} 
+				  
+	     \end{itemize}
+	     \subsubsection{Data Gathering Research}
+	     The data collection phase uses the yahoo TAQ data for the following stocks: 
+	     \subsubsection{FPGA Design Methodology Research} 
+	     \subsubsection{Front End Software Design Methodology Research GUI} 
+	     \subsubsection{Back End Software Design Methodology Research CRUD}
+	     \subsubsection{Research on Best Testing methods on Software}
+	     \subsubsection{Research on Software Maintenance Methodology}
+     \subsection{Software Design Specification}
+	     \subsubsection{Stock Data Gathering Software Design Specification}
+	     \subsubsection{Algorithm Design in C++ Specification} 
+	     \subsubsection{FPGA Design Specification} 
+	     \subsubsection{Back End Software Design Specification} 
+	     \subsubsection{Front End GUI Design Specification} 
+	     \subsubsection{Software Testing Specification} 
+     \subsection{Detailed Description Of Algorithm Design}
+		     \subsection{Detailed Description Algorithm Implementation in C++} 
+     \subsection{Detailed Description Hardware Design}
+	     \subsection{Detailed Description Algorithm Implementation in HardWare Description Language} 
+		     \subsection{Detailed Description Components Definitions}
+
+	\bibliographystyle{ieeetr}
+    \bibliography{ref}
+
+
+
+\end{document}	
