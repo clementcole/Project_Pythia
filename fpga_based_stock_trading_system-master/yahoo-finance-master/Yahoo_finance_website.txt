@@ -1,0 +1,5 @@
+system("pip install yahoo-finance");
+system("git clone git://github.com/lukaszbanasiak/yahoo-finance.git");
+system("python setup.py install");
+
+https://pypi.python.org/pypi/yahoo-finance/1.1.4
