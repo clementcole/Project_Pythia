@@ -1,0 +1,18 @@
+This Part of the project contains all the data mined from the internet using all.py script which is dependent on the yahoo_finance api the main.
+In order to collect data just run the command python all.py after installing python_finance using the command "pip python_finance". Just make sure
+you have the latest pip installed on your system.
+
+The actual data in reference to this directory is in the respective labeled stocks. So if you need the data input for AMD its in the AMD folder.
+That of APPLE in the APPLE folder and so on.
+
+In order to collect the data using the yahoo_finance api, I wasn't able to load data for all of 5 years all at once so I had to break them up into
+chunks. If you navigate into the data folders, they are split into 3 files. 
+So each folder contains 3 files where 
+	stock_part1 contains stocks from "2011-01-01" to "2012-12-31"
+	stock_part2 contains stocks from "2013-01-01" to "2014-12-31"
+	stock_part3 contains stocks from "2015-01-01" to "2016-06-30"
+So technically speaking, the data is of 5.5 years. 
+
+
+thanks.
+Clement Cole. 
