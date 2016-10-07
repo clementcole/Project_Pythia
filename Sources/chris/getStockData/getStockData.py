@@ -4,6 +4,8 @@
 # Basic python script to request stock names from user and then
 # pull historical data from Yahoo API.  Data is parsed and saved in CSV
 # or textfile for both the FPGA and the SW
+#
+# Last Updated: 10/7/2016
 #########################################################################
 
 
@@ -15,11 +17,13 @@ import sys
 import os
 
 
-#########################################################################
-# get stock names from user or txt; save in a list and return the list
-# this function can easily be changed to accept the stock names from some
+################################################
+# get stock names from user or txt; save in list 
+# and return the list. this function can easily 
+# be changed to accept the stock names from some
 # other source (i.e. the UI)
-#########################################################################
+################################################
+
 def getStockNamesUser():
 	# initialize empty list
 	stockNameList = ['0'] * 10
@@ -34,7 +38,7 @@ def getStockNamesUser():
 	# return the list of stock names
 	return stockNameList
 
-
+	
 def getStockNamesText():
 	# initialize empty list
 	stockNameList = ['0'] * 10
@@ -57,32 +61,33 @@ def getStockNamesText():
 	return stockNameList
 
 
-#########################################################################
-# get the stock data from Yahoo API and put in data frames (pandas)
-#########################################################################
+################################################
+# get the stock data from Yahoo API and put in 
+# data frames (pandas)
+################################################
 
 
 
 
-#########################################################################
-# put the stock data in a file for the FPGA format
-#########################################################################
+################################################
+# put stock data in a file for the FPGA format
+################################################
 
 
 
 
-#########################################################################
-# put the stock data in a file for the SW format
-#########################################################################
+################################################
+# put stock data in a file for the SW format
+################################################
 
 
 
 
-#########################################################################
-# main ##################################################################
-#########################################################################
+################################################
+#    main    ###################################
+################################################
 
-# get the stock names
+### get the stock names ###
 howToGetNames = '0'
 
 while howToGetNames not in ["1","2"]:
