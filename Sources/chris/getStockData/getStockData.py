@@ -1,3 +1,4 @@
+#!/usr/bin/python
 #########################################################################
 # Copyright (C) 2016-2017 Team Pythia
 #													   
@@ -66,14 +67,14 @@ def getStockNamesText():
 # get the file paths for stock data csv files
 ################################################	
 def getCsvFilePaths(stockNameList, base_dir="data"):
-    stockCsvPath = ['0'] * NUM_STOCKS
+    stockCsvPathList = ['0'] * NUM_STOCKS
 
     print ("\nFile Paths: \n")    
     
     for x in range(NUM_STOCKS):
-        stockCsvPath[x] = os.path.join(base_dir,"{}.csv".format(str(stockNameList[x])))
+        stockCsvPathList[x] = os.path.join(base_dir,"{}.csv".format(str(stockNameList[x])))
         print(stockCsvPathList[x]) # print the file path for debugging
-    return stockCsvPath
+    return stockCsvPathList
 	
  
 ################################################
@@ -87,10 +88,10 @@ def getCsvFilePaths(stockNameList, base_dir="data"):
 # get the stock data from csv files and put in 
 # data frames (pandas)
 ################################################
-def getDataFrames(stockNameList, stockCsvPath):
+def getDataFrames(stockNameList, stockCsvPathList):
     stockDataFrames = ['0'] * NUM_STOCKS
     for x in range(NUM_STOCKS):
-        stockDataFrames[x] = pd.read_csv(str(stockCsvPath[x]))
+        stockDataFrames[x] = pd.read_csv(str(stockCsvPathList[x]))
         # print (stockDataFrames[x])    # full CSV data
         
         # temp df for parsing
