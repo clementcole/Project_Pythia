@@ -6,7 +6,7 @@
 # pull historical data from Yahoo API.  Data is parsed and saved in CSV
 # or textfile for both the FPGA and the SW
 #
-# Last Updated: 10/10/2016
+# Last Updated: 10/11/2016
 #########################################################################
 
 
