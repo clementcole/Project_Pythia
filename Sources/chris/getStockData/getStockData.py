@@ -45,8 +45,8 @@ def getStockNamesText():
 	stockNameList = ['0'] * NUM_STOCKS
 
 	# open the file from current working dir
-	file = "\data\stockNames.txt"
-	path = os.getcwd()+file
+	# file = "\data\stockNames.txt"
+	path = os.path.join(os.getcwd(), "data", "stockNames.txt")
 	stockNamesTextFile = open(path, "r")
 
 	# read the file into a list
@@ -66,13 +66,13 @@ def getStockNamesText():
 ################################################
 # get the file paths for stock data csv files
 ################################################	
-def getCsvFilePaths(stockNameList, base_dir="data"):
+def getCsvFilePaths(stockNameList):
     stockCsvPathList = ['0'] * NUM_STOCKS
 
     print ("\nFile Paths: \n")    
     
     for x in range(NUM_STOCKS):
-        stockCsvPathList[x] = os.path.join(base_dir,"{}.csv".format(str(stockNameList[x])))
+        stockCsvPathList[x] = os.path.join(os.getcwd(),"data","{}.csv".format(str(stockNameList[x])))
         print(stockCsvPathList[x]) # print the file path for debugging
     return stockCsvPathList
 	
@@ -134,15 +134,19 @@ def getDataFrames(stockNameList, stockCsvPathList):
 
 
 ### get the stock names from console or text file ###
-howToGetNames = '0'
-while howToGetNames not in ["1","2"]:
-    howToGetNames = input("Get stock names from (1) user or (2) from text file: ")
-    if howToGetNames == '1':
-        stockNameList = getStockNamesUser()
-    elif howToGetNames == '2':
-        stockNameList = getStockNamesText()
-    else:
-        print("invalid entry. enter 1 for console input or 2 for text file")
+while True:
+    try:
+        howToGetNames = int(input("Get stock names from (1) user or (2) from text file: "))
+        if howToGetNames == 1:
+            stockNameList = getStockNamesUser()
+            break
+        elif howToGetNames == 2:
+            stockNameList = getStockNamesText()
+            break
+        else:
+            print ("Invalid Entry. Enter 1 or 2")
+    except ValueError:
+        print ("Invalid Entry. Enter 1 or 2")
 
 
 
