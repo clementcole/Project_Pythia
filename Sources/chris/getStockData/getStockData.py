@@ -6,8 +6,9 @@
 # pull historical data from Yahoo API.  Data is parsed and saved in CSV
 # or textfile for both the FPGA and the SW
 #
-# Last Updated: 10/11/2016
+# Last Updated: 10/12/2016      v1
 #########################################################################
+
 
 
 import yahoo_finance
@@ -17,7 +18,17 @@ import datetime
 import sys
 import os
 
+
+
+################################################
+# "Globals"
+################################################
 NUM_STOCKS = 10
+END_DATE = datetime.date.today() - datetime.timedelta(days=1)   # yesterday
+START_DATE = datetime.date.today() - datetime.timedelta(days=(365*4))
+# print (str(END_DATE) + " -- " + str(START_DATE))
+
+
 
 ################################################
 # get stock names from user or txt; save in list 
@@ -53,7 +64,7 @@ def getStockNamesText():
 	stockNameList = stockNamesTextFile.read().split(',')
 
 	# display the stocks
-	print("\nTen stocks to analyze: " + str(stockNameList))
+	print("\nTen stocks to analyze: " + str(stockNameList) + "\n")
 
 	# close the file
 	stockNamesTextFile.close()
@@ -69,21 +80,37 @@ def getStockNamesText():
 def getCsvFilePaths(stockNameList):
     stockCsvPathList = ['0'] * NUM_STOCKS
 
-    print ("\nFile Paths: \n")    
+    print ("\nFile Paths:")    
     
     for x in range(NUM_STOCKS):
-        stockCsvPathList[x] = os.path.join(os.getcwd(),"data","{}.csv".format(str(stockNameList[x])))
+        stockCsvPathList[x] = os.path.join(os.getcwd(),"data","data_{}.csv".format(str(stockNameList[x])))
         print(stockCsvPathList[x]) # print the file path for debugging
+    print ("end getCsvFilePaths\n")
     return stockCsvPathList
 	
  
+ 
 ################################################
 # get the stock data from Yahoo API and put in 
-# csv files in the subdirectory \data\
+# csv files in the subdirectory   cwd\data\*.csv
 ################################################ 
+def getHistoricalData(stockNameList):
+    for x in range(NUM_STOCKS):
+        stockName = yahoo_finance.Share(str(stockNameList[x]))
+        
+        # data_stockData = stockName.get_historical("beginning", "end")
+        # data_stockData = stockName.get_historical("2012-06-01", "2016-06-01")
+        
+        data_stockData = stockName.get_historical(str(START_DATE), str(END_DATE))
+        df_stockData = pd.DataFrame(data_stockData)
+        df_stockData.to_csv((os.path.join("data","data_" + str(stockNameList[x]) + ".csv")))
+        # print(stockData)
+        print ("getHistoricalData " + str(str(stockNameList[x])))
+    print ("done getting historical data")
+    return True
  
  
-
+ 
 ################################################
 # get the stock data from csv files and put in 
 # data frames (pandas)
@@ -101,10 +128,10 @@ def getDataFrames(stockNameList, stockCsvPathList):
         stockDataFrames[x] = df[['Date','Symbol','High','Low']]
         
         # print out the first ten rows to verify it's functioning correct
-        df = stockDataFrames[x]
-        print (df[:10])
+        # df = stockDataFrames[x]
+        # print (df[:10])
     
-    
+    print("end getDataFrames\n")
     return stockDataFrames
 
 
@@ -148,16 +175,20 @@ while True:
     except ValueError:
         print ("Invalid Entry. Enter 1 or 2")
 
-
+### generate the csv files for all ten stocks
+getHistoricalData(stockNameList)
 
 ### make a list of the csv file paths ###	
 stockCsvPathList = getCsvFilePaths(stockNameList)
-
-
 
 ### put the csv files in a list of data frames ###
 stockDataFramesList = ['0'] * NUM_STOCKS
 getDataFrames(stockNameList, stockCsvPathList)
 
 
+
+
+
+
+print("Reached end of script")
 ######################################################################### END
