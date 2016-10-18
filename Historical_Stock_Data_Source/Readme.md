@@ -1,3 +1,6 @@
+Contains example stock data csv outputs
+
+
 The input data is contained in the STOCK_Data/ directory. Each type of stock is contained in their respective directories for stocks:
 
 structure of the directory is of the form

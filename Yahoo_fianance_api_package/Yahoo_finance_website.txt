@@ -1,3 +1,7 @@
+Contains Yahoo Finance Python API documents
+
+
+
 system("pip install yahoo-finance");
 system("git clone git://github.com/lukaszbanasiak/yahoo-finance.git");
 system("python setup.py install");
