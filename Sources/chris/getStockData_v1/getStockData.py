@@ -179,11 +179,11 @@ while True:
 getHistoricalData(stockNameList)
 
 ### make a list of the csv file paths ###	
-stockCsvPathList = getCsvFilePaths(stockNameList)
+#stockCsvPathList = getCsvFilePaths(stockNameList)
 
 ### put the csv files in a list of data frames ###
-stockDataFramesList = ['0'] * NUM_STOCKS
-getDataFrames(stockNameList, stockCsvPathList)
+#stockDataFramesList = ['0'] * NUM_STOCKS
+#getDataFrames(stockNameList, stockCsvPathList)
 
 
 
